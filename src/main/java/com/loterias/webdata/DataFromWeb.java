@@ -3,7 +3,6 @@ package com.loterias.webdata;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.loterias.LoteriasApplication;
 import com.loterias.model.EuromillonResult;
 import com.loterias.repository.EuromillonRepository;
 
@@ -67,8 +65,7 @@ public class DataFromWeb {
 		
 		List<String> list = new ArrayList<>();
 		
-		LocalDateTime now = LocalDateTime.now();
-		int actualYear = now.getYear();
+		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
 		
 		for (int y=actualYear ; y>=2004 ; y--){
 			String url = "https://www.euromillones.com/resultados-euromillones.asp?y="+y;
