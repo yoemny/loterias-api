@@ -6,7 +6,7 @@
 	<groupId>com.yoemny</groupId>
 	<artifactId>loterias</artifactId>
 	<version>0.1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>loterias</name>
 	<description>loterias</description>
@@ -21,14 +21,40 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.7</java.version>
+		<maven.compiler.target>1.7</maven.compiler.target>
+    	<maven.compiler.source>1.7</maven.compiler.source>
+
+    	<appengine.app.version>1</appengine.app.version>
+    	<appengine.target.version>1.9.53</appengine.target.version>
+    	<appengine-maven-plugin-version>1.3.1</appengine-maven-plugin-version>
 	</properties>
 
 	<dependencies>
+	    <dependency>
+      		<groupId>com.google.appengine</groupId>
+      		<artifactId>appengine-api-1.0-sdk</artifactId>
+      		<version>${appengine.target.version}</version>
+    	</dependency>
+		<dependency>
+      		<groupId>com.google.appengine</groupId>
+      		<artifactId>appengine-testing</artifactId>
+      		<version>${appengine.target.version}</version>
+      		<scope>test</scope>
+    	</dependency>
+		<dependency>
+      		<groupId>com.google.appengine</groupId>
+      		<artifactId>appengine-api-stubs</artifactId>
+      		<version>${appengine.target.version}</version>
+      		<scope>test</scope>
+    	</dependency>
+
+
  		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		
+    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -61,7 +87,7 @@
 			<plugin>
         		<groupId>com.google.cloud.tools</groupId>
         		<artifactId>appengine-maven-plugin</artifactId>
-        		<version>1.2.1</version>
+       			 <version>${appengine-maven-plugin-version}</version>
       		</plugin>
 		</plugins>
 	</build>
