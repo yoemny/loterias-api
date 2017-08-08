@@ -28,8 +28,6 @@ public class EuromillonResult {
 	
 	private Boolean sorted;
 	
-	private Integer count1ra, count2da, count3ra;
-	
 	private String pageCode = "NoCode";
 
 	
@@ -192,48 +190,6 @@ public class EuromillonResult {
 	 */
 	public void setSorted(Boolean sorted) {
 		this.sorted = sorted;
-	}
-
-	/**
-	 * @return the count1ra
-	 */
-	public Integer getCount1ra() {
-		return count1ra;
-	}
-
-	/**
-	 * @param count1ra the count1ra to set
-	 */
-	public void setCount1ra(Integer count1ra) {
-		this.count1ra = count1ra;
-	}
-
-	/**
-	 * @return the count2da
-	 */
-	public Integer getCount2da() {
-		return count2da;
-	}
-
-	/**
-	 * @param count2da the count2da to set
-	 */
-	public void setCount2da(Integer count2da) {
-		this.count2da = count2da;
-	}
-
-	/**
-	 * @return the count3ra
-	 */
-	public Integer getCount3ra() {
-		return count3ra;
-	}
-
-	/**
-	 * @param count3ra the count3ra to set
-	 */
-	public void setCount3ra(Integer count3ra) {
-		this.count3ra = count3ra;
 	}
 
 	/**

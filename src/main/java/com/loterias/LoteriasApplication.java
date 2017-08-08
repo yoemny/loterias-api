@@ -21,8 +21,8 @@ public class LoteriasApplication implements CommandLineRunner{
 	
 	@Autowired
 	private DataFromWeb dataFromWeb;
-	//@Autowired
-	//private EuromillonRepository euromillonRepository;
+	@Autowired
+	private EuromillonRepository euromillonRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoteriasApplication.class, args);
