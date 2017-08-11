@@ -3,12 +3,13 @@ package com.loterias.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.loterias.model.EuromillonResult;
+import com.loterias.model.Update;
 import com.loterias.repository.EuromillonRepository;
 
 @RestController
@@ -20,12 +21,13 @@ public class EuroMillonController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<EuromillonResult> findAll(){
-		return euromillonRepository.findAll();
+		List<EuromillonResult> results = euromillonRepository.findAll();
+		return results;
 	}
 	
-	@PostMapping("/update")
-	public String updateResults(){
-		return "NO";
+	@GetMapping("/update")
+	public Update updateResults(){
+		return new Update("20/01/2017");
 		
 	}
 }

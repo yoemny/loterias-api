@@ -18,12 +18,12 @@ import com.loterias.webdata.DataFromWeb;
 public class LoteriasApplication implements CommandLineRunner{
 
 	private static final Logger log = LoggerFactory.getLogger(LoteriasApplication.class);
-	
+	/*
 	@Autowired
 	private DataFromWeb dataFromWeb;
 	@Autowired
 	private EuromillonRepository euromillonRepository;
-
+*/
 	public static void main(String[] args) {
 		SpringApplication.run(LoteriasApplication.class, args);
 	}
