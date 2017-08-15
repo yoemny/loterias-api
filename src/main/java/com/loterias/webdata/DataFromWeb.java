@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,30 +61,57 @@ public class DataFromWeb {
 		String dateInString =  day + "-" + months.get(month) + "-" + year;
 		return formatter.parse(dateInString);
 	}
+
+	public String getLastResultDate() throws IOException{
+//		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+		int actualYear = 2013;
+		String url = "https://www.euromillones.com/resultados-euromillones.asp?y=" + actualYear;
+		Document doc = Jsoup.connect(url).get();
+		Elements tableElements = doc.getElementsByClass("tbl no-responsive ee hover no-back");
+		Element te = tableElements.first();
+		Elements elementsTable = te.children();   
+		Element  elementTBody = elementsTable.get(0);
+		Elements elementsTR = elementTBody.children();
+		Element eTR = elementsTR.first();
+		Element elementDate = eTR.getElementsByClass("d hide-phone").first();
+		return elementDate.text();
+	}
 	
-	public List<String> getAllDrawDates() throws IOException{
+	public void getAllNewDrawDates() throws IOException, ParseException{
 		
-		List<String> list = new ArrayList<>();
 		
-		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+//		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+		int y = 2013;
+		boolean newAvailable = true;
 		
-		for (int y=actualYear ; y>=2004 ; y--){
+		while ( newAvailable && y>=2004 ){
 			String url = "https://www.euromillones.com/resultados-euromillones.asp?y="+y;
 			Document doc = Jsoup.connect(url).get();
 			Elements tableElements = doc.getElementsByClass("tbl no-responsive ee hover no-back");
-			for (Element te : tableElements) {
+			Iterator<Element> itTable = tableElements.iterator();
+			while ( newAvailable && itTable.hasNext() ) {
+				Element te = itTable.next();
 				Elements elementsTable = te.children();   
 				Element  elementTBody = elementsTable.get(0);
 				Elements elementsTR = elementTBody.children();
-				for (Element eTR : elementsTR) {
+				Iterator<Element> itTR = elementsTR.iterator();
+				while ( newAvailable && itTR.hasNext() ) {
+					Element eTR = itTR.next();
 					Element elementDate = eTR.getElementsByClass("d hide-phone").first();
-					list.add(elementDate.text());
+					Date newDate = getDate(elementDate.text());
+					
+					if ( euromillonRepository.findByDate(newDate) != null )
+						newAvailable = false;
+					else{
+						EuromillonResult newResult = new EuromillonResult(newDate);
+						euromillonRepository.save(newResult);
+					}
 				}
 			}
-
+			
+			y--;
 		}
 		
-		return list;
 		
 		
 	}
