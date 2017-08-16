@@ -49,6 +49,8 @@ public class EuroMillonController {
 	public Update update() throws IOException, ParseException{
 
 		dataFromWeb.getAllNewDrawDates();
+		dataFromWeb.updateResultCode();
+		dataFromWeb.updateResult();
 		Date date = dataFromWeb.getDate(dataFromWeb.getLastResultDate());
 		return new Update(true, date.toString());
 	}

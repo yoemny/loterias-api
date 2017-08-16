@@ -63,8 +63,7 @@ public class DataFromWeb {
 	}
 
 	public String getLastResultDate() throws IOException{
-//		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
-		int actualYear = 2013;
+		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
 		String url = "https://www.euromillones.com/resultados-euromillones.asp?y=" + actualYear;
 		Document doc = Jsoup.connect(url).get();
 		Elements tableElements = doc.getElementsByClass("tbl no-responsive ee hover no-back");
@@ -80,8 +79,8 @@ public class DataFromWeb {
 	public void getAllNewDrawDates() throws IOException, ParseException{
 		
 		
-//		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
-		int y = 2013;
+		int actualYear = Calendar.getInstance().get(Calendar.YEAR);
+		int y = actualYear;
 		boolean newAvailable = true;
 		
 		while ( newAvailable && y>=2004 ){
