@@ -14,4 +14,5 @@ public interface EuromillonRepository extends CrudRepository<EuromillonResult, L
 	public EuromillonResult findByDate(Date date);
 	public List<EuromillonResult> findByPageCode(String pageCode);
 	public List<EuromillonResult> findByPageCodeNotAndDrawNumber(String pageCode,Integer drawNumber);
+	public List<EuromillonResult> findByDrawNumber(Integer drawNumber);
 }

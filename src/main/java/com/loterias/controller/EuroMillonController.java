@@ -41,7 +41,14 @@ public class EuroMillonController {
 	public Update isUpdateAvailable() throws IOException, ParseException{
 		String strLastDate = dataFromWeb.getLastResultDate();
 		Date date = dataFromWeb.getDate(strLastDate);
-		return new Update(( euromillonRepository.findByDate(date) != null ), date.toString());
+		Update update = new Update(false, date.toString());
+		if ( euromillonRepository.findByDate(date) != null ){
+			List<EuromillonResult>  resultsToUpdate = euromillonRepository.findByDrawNumber(-1);
+			if (resultsToUpdate.isEmpty())
+				update.setIsUpdated(true);
+		}
+		
+		return update;
 		
 	}
 	
