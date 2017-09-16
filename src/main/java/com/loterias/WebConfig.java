@@ -12,6 +12,6 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-			.allowedOrigins("https://lotterias.herokuapp.com", "http://localhost:4200");
+			.allowedOrigins("https://loterias-web.herokuapp.com", "http://localhost:4200");
 	}
 }
