@@ -11,8 +11,8 @@ import com.loterias.model.Stadistic;
 import com.loterias.repository.StadisticRepository;
 
 @RestController
-@RequestMapping("/statistic")
-public class StatisticController {
+@RequestMapping("/stadistic")
+public class StadisticController {
 	
 	@Autowired
 	private StadisticRepository stadisticRepository;
