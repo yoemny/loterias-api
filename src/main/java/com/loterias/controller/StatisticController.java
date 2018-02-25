@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.loterias.model.Stadistic;
 import com.loterias.model.StadisticGroup;
 import com.loterias.repository.StadisticGroupRepository;
 import com.loterias.repository.StadisticRepository;
@@ -22,8 +23,8 @@ public class StatisticController {
 	private StadisticRepository stadisticRepository;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<StadisticGroup> findAll(){
-		List<StadisticGroup> results = stadisticRepository.findAll();
+	public List<Stadistic> findAll(){
+		List<Stadistic> results = stadisticRepository.findAll();
 		return results;
 	}
 	
