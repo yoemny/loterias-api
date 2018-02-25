@@ -20,7 +20,7 @@ public class StadisticGroup {
 	@Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 	
-	private String groupName;
+	private String name;
 	
 	@OneToMany(mappedBy = "stadisticGroup", cascade = CascadeType.ALL)
 	private Set<Stadistic>  stadistics;
@@ -29,9 +29,9 @@ public class StadisticGroup {
 		super();
 	}
 
-	public StadisticGroup(String groupName, Set<Stadistic> stadistics) {
+	public StadisticGroup(String name, Set<Stadistic> stadistics) {
 		super();
-		this.groupName = groupName;
+		this.name = name;
 		this.stadistics = stadistics;
 	}
 
@@ -52,15 +52,15 @@ public class StadisticGroup {
 	/**
 	 * @return the groupName
 	 */
-	public String getGroupName() {
-		return groupName;
+	public String getName() {
+		return name;
 	}
 
 	/**
 	 * @param groupName the groupName to set
 	 */
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
