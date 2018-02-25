@@ -1,14 +1,11 @@
 package com.loterias.model;
 
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -22,17 +19,13 @@ public class StadisticGroup {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "stadisticGroup", cascade = CascadeType.ALL)
-	private Set<Stadistic>  stadistics;
-	
 	public StadisticGroup() {
 		super();
 	}
 
-	public StadisticGroup(String name, Set<Stadistic> stadistics) {
+	public StadisticGroup(String name) {
 		super();
 		this.name = name;
-		this.stadistics = stadistics;
 	}
 
 	/**
@@ -62,21 +55,5 @@ public class StadisticGroup {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * @return the stadistics
-	 */
-	public Set<Stadistic> getStadistics() {
-		return stadistics;
-	}
-
-	/**
-	 * @param stadistics the stadistics to set
-	 */
-	public void setStadistics(Set<Stadistic> stadistics) {
-		this.stadistics = stadistics;
-	}
-	
-
 	
 }
