@@ -8,16 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.loterias.model.Stadistic;
-import com.loterias.model.StadisticGroup;
-import com.loterias.repository.StadisticGroupRepository;
 import com.loterias.repository.StadisticRepository;
 
 @RestController
 @RequestMapping("/statistic")
 public class StatisticController {
-	
-	@Autowired
-	private StadisticGroupRepository stadisticGroupRepository;
 	
 	@Autowired
 	private StadisticRepository stadisticRepository;
